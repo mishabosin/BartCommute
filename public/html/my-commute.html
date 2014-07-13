@@ -1,0 +1,26 @@
+<div data-ng-controller="bc.myCommute">
+<h4>My Commute</h4>
+    <!--TODO: add Refresh-->
+<div data-ng-repeat="route in routes">
+    <h5>{{route.arrivalStation.goingLabel}}</h5>
+
+    <div data-ng-repeat="trip in route.schedule">
+        <div>
+            {{trip._origTimeMin}} - {{route.departureStation.stationData.name}}
+        </div>
+        <div>
+            {{trip._destTimeMin}} - {{route.arrivalStation.stationData.name}}
+        </div>
+        <div>
+            Direct:
+            <span data-ng-show="trip.leg.length == 1">Yes</span>
+            <span data-ng-hide="trip.leg.length == 1">No</span>
+        </div>
+    </div>
+
+    <button data-ng-click="updateCommuteFromStation(route.arrivalStation)">
+        {{route.arrivalStation.leavingLabel}}
+    </button>
+</div>
+
+</div>

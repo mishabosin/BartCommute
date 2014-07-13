@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='css', href='/stylesheets/style.css')
+
+    // Vendor
+    script(src='http://code.jquery.com/jquery-2.1.1.min.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js')
+    script(src='js/vendor/xml2json.js')
+
+    // Services
+    script(src='js/bc/service/user.js')
+    script(src='js/bc/service/bart.js')
+
+    // Controller
+    script(src='js/bc/app/app.js')
+    script(src='js/bc/app/my-stations.js')
+    script(src='js/bc/app/my-commute.js')
+
+    //script(src='js/ba-commute.js')
+
+  body
+    block content

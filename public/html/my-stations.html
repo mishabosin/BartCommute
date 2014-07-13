@@ -1,0 +1,25 @@
+<div data-ng-controller="bc.myStations">
+    <h4>My Stations</h4>
+
+    <!--TODO: show a loading indicator while station data is retrieved-->
+
+    <form data-ng-show="bartStations" data-ng-submit="setStations()">
+        <div data-ng-repeat="myStation in myStations">
+            <label for="{{myStation.label}}">{{myStation.label}}</label>
+            <select id="{{myStation.label}}"
+                    data-ng-model="myStation.stationData"
+                    data-ng-options="station.name for station in bartStations"
+                    data-ng-change="isFormValid()">
+            </select>
+            <div data-ng-show="isSubmitted && myStation.errorCode == STATION_ERROR_NO_DATA">
+                Please select a station
+            </div>
+            <div data-ng-show="myStation.errorCode == STATION_ERROR_DUPLICATE_LOCATION">
+                You already selected this station, please pick another.
+            </div>
+        </div>
+
+        <button type="submit">Set stations</button>
+        <a data-ng-click="cancel()">Cancel</a>
+    </form>
+</div>
