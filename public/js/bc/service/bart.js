@@ -55,7 +55,7 @@
 
         console.log("Retrieved the schedule between " + startStationAbbr
           + " and " + endStationAbbr);
-        console.log(schedule);
+        //console.log(schedule);
 
         onSuccess(schedule);
       },

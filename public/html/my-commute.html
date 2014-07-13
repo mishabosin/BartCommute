@@ -1,6 +1,10 @@
 <div data-ng-controller="bc.myCommute">
 <h4>My Commute</h4>
-    <!--TODO: add Refresh-->
+    <!--TODO: add a Refresh button-->
+<div data-ng-show="locationError">
+    <!--TODO: provide a more detailed message based on error type-->
+    {{locationError}}
+</div>
 <div data-ng-repeat="route in routes">
     <h5>{{route.arrivalStation.goingLabel}}</h5>
 

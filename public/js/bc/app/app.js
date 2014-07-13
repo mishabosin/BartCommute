@@ -6,11 +6,14 @@
     $scope.MY_COMMUTE_VIEW = "html/my-commute.html";
     $scope.TRIP_PLANNER_VIEW = "html/trip-planner.html";
 
-    $scope.HOME_KEY = "home";
-    $scope.WORK_KEY = "work";
-
     $scope.STATION_ERROR_NO_DATA = "NO STATION DATA";
     $scope.STATION_ERROR_DUPLICATE_LOCATION = "DUPLICATE LOCATION";
+
+    $scope.LOCATION_ERROR_NOT_SUPPORTED = "NO LOCATION SERVICE";
+    $scope.LOCATION_ERROR_PERMISSION_DENIED = "LOCATION PERMISSION DENIED";
+    $scope.LOCATION_ERROR_POSITION_UNAVAILABLE = "LOCATION POSITION UNAVAILABLE";
+    $scope.LOCATION_ERROR_TIMEOUT = "LOCATION TIMEOUT";
+    $scope.LOCATION_ERROR_UNKNOWN = "LOCATION ERROR";
 
     $scope.app = {
       view: null,
