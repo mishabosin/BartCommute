@@ -148,7 +148,7 @@
         if (!departureStation) {
           // Shouldn't be here.
           // Need to get preferred stations before commute can be calculated
-          $scope.app.view = $scope.MY_STATIONS_VIEW;
+          $scope.setView($scope.MY_STATIONS_VIEW);
           $scope.updateView();
         } else {
           $scope.updateCommuteFromStation(departureStation);

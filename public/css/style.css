@@ -1,8 +1,24 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    margin-top: 70px;
 }
 
 a {
-  color: #00B7FF;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 730px;
+    }
+}
+
+.route {
+    margin: 15px 0;
+    padding: 10px 15px;
+    border: 1px solid #428bca;;
+    border-radius: 4px;
+}
+
+.top-space-medium {
+    margin-top: 15px;
 }

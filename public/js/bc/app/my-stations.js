@@ -73,7 +73,7 @@
 
       bc.user.savePreferredStations($scope.myStations, function() {
         $scope.app.myStations = $scope.myStations;
-        $scope.app.view = $scope.MY_COMMUTE_VIEW;
+        $scope.setView($scope.MY_COMMUTE_VIEW);
       });
     };
 
@@ -88,9 +88,9 @@
         && $scope.app.myStations[0].stationData;
 
       if (havePreferred) {
-        $scope.app.view = $scope.MY_COMMUTE_VIEW;
+        $scope.setView($scope.MY_COMMUTE_VIEW);
       } else {
-        $scope.app.view = $scope.TRIP_PLANNER_VIEW;
+        $scope.setView($scope.TRIP_PLANNER_VIEW);
       }
     };
   };

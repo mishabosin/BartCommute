@@ -1,30 +1,52 @@
 <div data-ng-controller="bc.myCommute">
-<h4>My Commute</h4>
-    <!--TODO: add a Refresh button-->
-<div data-ng-show="locationError">
-    <!--TODO: provide a more detailed message based on error type-->
-    {{locationError}}
-</div>
-<div data-ng-repeat="route in routes">
-    <h5>{{route.arrivalStation.goingLabel}}</h5>
+  <div data-ng-include="'html/nav.html'"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
 
-    <div data-ng-repeat="trip in route.schedule">
-        <div>
-            {{trip._origTimeMin}} - {{route.departureStation.stationData.name}}
+        <div data-ng-show="locationError">
+          <!--TODO: provide a more detailed message based on error type-->
+          {{locationError}}
         </div>
-        <div>
-            {{trip._destTimeMin}} - {{route.arrivalStation.stationData.name}}
-        </div>
-        <div>
-            Direct:
-            <span data-ng-show="trip.leg.length == 1">Yes</span>
-            <span data-ng-hide="trip.leg.length == 1">No</span>
-        </div>
+
+      </div>
     </div>
 
-    <button data-ng-click="updateCommuteFromStation(route.arrivalStation)">
-        {{route.arrivalStation.leavingLabel}}
-    </button>
-</div>
+    <!--TODO: show a loading indicator while schedule is retrieved-->
 
+    <div data-ng-repeat="route in routes">
+      <div class="row">
+        <div class="col-md-12">
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">{{route.arrivalStation.goingLabel}}</h3>
+            </div>
+            <div class="panel-body">
+
+              <div data-ng-repeat="trip in route.schedule" class="route">
+                <div>
+                  {{trip._origTimeMin}} - {{route.departureStation.stationData.name}}
+                </div>
+                <div data-ng-hide="trip.leg.length == 1" class="text-muted">
+                  Transfer required
+                </div>
+                <div>
+                  {{trip._destTimeMin}} - {{route.arrivalStation.stationData.name}}
+                </div>
+              </div>
+
+              <div class="text-center">
+                <button data-ng-click="updateCommuteFromStation(route.arrivalStation)" class="btn btn-primary">
+                  {{route.arrivalStation.leavingLabel}}
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>

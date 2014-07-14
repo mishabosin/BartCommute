@@ -2,12 +2,17 @@ doctype html
 html
   head
     title= "BART Commute"
-    link(rel='css', href='/stylesheets/style.css')
+    // Base style
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')
+
+    // Style
+    link(rel='stylesheet', href='css/style.css')
 
     // Vendor
     script(src='http://code.jquery.com/jquery-2.1.1.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')
     script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js')
-    script(src='js/vendor/xml2json.js')
+    script(src='vendor/xml2json.js')
 
     // Services
     script(src='js/bc/service/location.js')

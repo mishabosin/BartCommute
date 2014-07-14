@@ -38,6 +38,11 @@
       ]
     }
 
+    $scope.setView = function(view) {
+      // Can manage hash tags in the url to support the back button (ng-view)
+      $scope.app.view = view;
+    };
+
     /**
      * Tell Angular to update the view when changes were made to the model
      * outside of Angular's knowledge
@@ -52,10 +57,10 @@
       bc.user.getPreferredStations(function(stations) {
         if (stations !== null) {
           $scope.app.myStations = stations;
-          $scope.app.view = $scope.MY_COMMUTE_VIEW;
+          $scope.setView($scope.MY_COMMUTE_VIEW);
         } else {
           $scope.app.myStations = initMyStations();
-          $scope.app.view = $scope.MY_STATIONS_VIEW;
+          $scope.setView($scope.MY_STATIONS_VIEW);
         }
 
         $scope.updateView();
