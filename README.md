@@ -13,7 +13,7 @@ BART has a great trip planner feature, but this app will provide concise and rel
 
 **BartCommute** is a web app running on Node.js hosted by Heroku. This is my first node app that has actually seen the light of day, and it is my first time deploying anything using Heroku. (Both have been amazing to work with!) The app currently uses a light-weight [Express](http://expressjs.com/) server and hosts a single page htlm app that relies on [jQuery](http://jquery.com/), [AngularJs](https://angularjs.org/), and [Bootstrap](http://getbootstrap.com/).
 
-I'm intentionally using only the lightest features of AngularJs (basically just data-binding), and I'd like to rewrite the client to use other front-end MVC frameworks such as Backbone.js or Knockout.js. 
+I'm intentionally using only the lightest features of AngularJs, so that I can easily experiment with other front-end MVC frameworks such as Backbone.js or Knockout.js. 
 
 The user data is currently stored in the client using localStorage, and it will probably stay there unless there's a reason to ask users to create an account to use the app.
 
@@ -37,7 +37,7 @@ To host your own version of this app make sure you have the prerequisites covere
 
 ### TODO
 * Pick a testing framework and add tests! Will start with public/services and expand from there.
-* Improve the UI - make it mobile friendly and add a few icons.
+* Add more character to the UI.
 * Register the app with BART to get a unique app id for faster and more reliable API access.
 * Build the client using Backbone.js
 * Do more with node - add a notification feature that allows the user to send a text or email with arrival information to family or a colleague.
