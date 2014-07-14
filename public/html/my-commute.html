@@ -12,7 +12,14 @@
       </div>
     </div>
 
-    <!--TODO: show a loading indicator while schedule is retrieved-->
+    <div data-ng-hide="routes.length" class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title text-center">Loading schedule...</h3>
+      </div>
+      <div class="panel-body">
+        <p class="text-muted">{{app.loadingMsg}}</p>
+      </div>
+    </div>
 
     <div data-ng-repeat="route in routes">
       <div class="row">

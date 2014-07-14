@@ -9,7 +9,11 @@
             <h3 class="panel-title text-center">My Stations</h3>
           </div>
           <div class="panel-body">
-
+            <div data-ng-hide="app.bartStations">
+              <p class="text-muted">
+                Loading station data...
+              </p>
+            </div>
             <!--TODO: show a loading indicator while station data is retrieved-->
 
             <form data-ng-show="app.bartStations" data-ng-submit="setStations()" class="form-horizontal top-space-medium" role="form">

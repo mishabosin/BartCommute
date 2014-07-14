@@ -15,7 +15,7 @@
      * error code on each based on their validity.
      * - Each preferred station has to have data associated with it
      * - Each station selection has to be unique
-     *
+     * @returns {boolean} - true if form is valid
      */
     $scope.isFormValid = function() {
       var i,

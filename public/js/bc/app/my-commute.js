@@ -5,6 +5,7 @@
     $scope.routes = [];
 
     function getDepartureStation(onStationRetrieved) {
+      $scope.app.loadingMsg = "Getting user location...";
       if (!$scope.app.myStations[0] || !$scope.app.myStations[0].stationData) {
         // Sanity check - make sure there are stations to pick from
         onStationRetrieved(null);
@@ -119,10 +120,10 @@
 
       // If we got all the routes, update the view
       if ($scope.routes.length === expectedRoutes) {
+        $scope.app.loadingMsg = null;
         $scope.updateView();
       }
     }
-
 
     /**
      * Finds all the routes between the departureStation and all other preferred
@@ -132,6 +133,8 @@
     $scope.updateCommuteFromStation = function(departureStation) {
       var i, station;
 
+      $scope.app.loadingMsg = "Loading departure times...";
+      $scope.updateView();
       $scope.routes = [];
 
       for (i = 0; i < $scope.app.myStations.length; i++) {
@@ -149,6 +152,7 @@
           // Shouldn't be here.
           // Need to get preferred stations before commute can be calculated
           $scope.setView($scope.MY_STATIONS_VIEW);
+          $scope.app.loadingMsg = null;
           $scope.updateView();
         } else {
           $scope.updateCommuteFromStation(departureStation);

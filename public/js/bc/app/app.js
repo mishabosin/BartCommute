@@ -17,6 +17,7 @@
 
     $scope.app = {
       view: null,
+      loadingMsg: null,
       bartStations: null,
       myStations: []
     };
@@ -55,6 +56,8 @@
     // Init the app
     (function() {
       // Get the preferred user stations and redirect accordingly
+      $scope.app.loadingMsg = "Retrieving preferred stations";
+
       bc.user.getPreferredStations(function(stations) {
         if (stations !== null) {
           $scope.app.myStations = stations;
@@ -63,7 +66,7 @@
           $scope.app.myStations = initMyStations();
           $scope.setView($scope.MY_STATIONS_VIEW);
         }
-
+        $scope.app.loadingMsg = null;
         $scope.updateView();
       });
     }());
