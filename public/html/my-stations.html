@@ -12,14 +12,14 @@
 
             <!--TODO: show a loading indicator while station data is retrieved-->
 
-            <form data-ng-show="bartStations" data-ng-submit="setStations()" class="form-horizontal top-space-medium" role="form">
+            <form data-ng-show="app.bartStations" data-ng-submit="setStations()" class="form-horizontal top-space-medium" role="form">
               <div data-ng-repeat="myStation in myStations">
                 <div class="form-group">
                   <label for="{{myStation.label}}" class="col-sm-2 control-label">{{myStation.label}}</label>
                   <div class="col-sm-10">
                     <select id="{{myStation.label}}" class="form-control"
                             data-ng-model="myStation.stationData"
-                            data-ng-options="station.name for station in bartStations"
+                            data-ng-options="station.name for station in app.bartStations track by station.abbr"
                             data-ng-change="isFormValid()">
                     </select>
                     <div data-ng-show="isSubmitted && myStation.errorCode == STATION_ERROR_NO_DATA" class="text-danger">

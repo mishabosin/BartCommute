@@ -10,18 +10,6 @@
     // Make a local version of myStations by cloning initialized data
     $scope.myStations = JSON.parse(JSON.stringify($scope.app.myStations));
 
-
-    /**
-     * Access the API for a list of BART stations
-     */
-    function getListOfStations() {
-      bc.bart.getStations(function(stations) {
-        $scope.bartStations = stations;
-        $scope.updateView();
-      });
-    }
-    getListOfStations();
-
     /**
      * Checks to make sure that all preferred stations are valid and updates the
      * error code on each based on their validity.
@@ -93,5 +81,16 @@
         $scope.setView($scope.TRIP_PLANNER_VIEW);
       }
     };
+
+    // Init the view
+    (function() {
+      if (!$scope.app.bartStations) {
+        bc.bart.getStations(function(stations) {
+          $scope.app.bartStations = stations;
+          $scope.updateView();
+        });
+      }
+    }());
+
   };
 }(window.bc = window.bc || {}));

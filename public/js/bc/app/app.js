@@ -17,6 +17,7 @@
 
     $scope.app = {
       view: null,
+      bartStations: null,
       myStations: []
     };
 
