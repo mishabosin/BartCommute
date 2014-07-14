@@ -5,21 +5,22 @@
     $scope.routes = [];
 
     function getDepartureStation(onStationRetrieved) {
-      $scope.app.loadingMsg = "Getting user location...";
       if (!$scope.app.myStations[0] || !$scope.app.myStations[0].stationData) {
         // Sanity check - make sure there are stations to pick from
         onStationRetrieved(null);
 
       } else {
         // Get the client location
+        $scope.app.loadingMsg = "Getting user location...";
         bc.location.getLocation(function(location) {
-          $scope.dismissLocationError();
+          $scope.locationError = null;
           onStationRetrieved(getClosestStation(location));
 
         }, function(error) {
           // No location information - return the first preferred station
           setLocationErrorMsg(error);
           onStationRetrieved($scope.app.myStations[0]);
+
         });
       }
     }
@@ -28,7 +29,7 @@
       var i, distance, closestStation;
 
       for (i = 0; i < $scope.app.myStations.length; i++) {
-        distance = getDistance(
+        distance = bc.location.getDistance(
           location.coords.latitude,
           location.coords.longitude,
           $scope.app.myStations[i].stationData.gtfs_latitude,
@@ -41,34 +42,6 @@
       }
 
       return closestStation;
-    }
-
-    /**
-     * Calculate the distance between two geo locations. Taken from
-     * http://stackoverflow.com/questions/27928/how-do-i-calculate-distance-between-two-latitude-longitude-points
-     *
-     * @param lat1
-     * @param lon1
-     * @param lat2
-     * @param lon2
-     * @returns {number} - distance between two locations in miles
-     */
-    function getDistance(lat1, lon1, lat2, lon2) {
-      var R = 3963; // Radius of the earth in miles
-      var dLat = deg2rad(lat2 - lat1);  // deg2rad below
-      var dLon = deg2rad(lon2 - lon1);
-      var a =
-          Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-          Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-          Math.sin(dLon / 2) * Math.sin(dLon / 2)
-        ;
-      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-      var d = R * c;
-      return d;
-    }
-
-    function deg2rad(deg) {
-      return deg * (Math.PI/180)
     }
 
     function setLocationErrorMsg(error) {
@@ -90,10 +63,6 @@
           break;
       }
     }
-
-    $scope.dismissLocationError = function() {
-      $scope.locationError = null;
-    };
 
     /**
      * Gets the route schedule data from bart
