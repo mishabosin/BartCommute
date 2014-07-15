@@ -52,7 +52,7 @@
                 <div>
                   {{trip._origTimeMin}} - {{route.departureStation.stationData.name}}
                 </div>
-                <div data-ng-hide="trip.leg.length > 1" class="text-muted">
+                <div data-ng-show="trip.leg.length > 1" class="text-muted">
                   Transfer required
                 </div>
                 <div>
