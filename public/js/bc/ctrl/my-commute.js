@@ -1,6 +1,6 @@
 (function(bc) {
   'use strict';
-  bc.myCommute = function($scope) {
+  bc.bcApp.controller('myCommute', function ($scope) {
 
     $scope.routes = [];
 
@@ -129,5 +129,5 @@
       });
     }());
 
-  };
+  });
 }(window.bc = window.bc || {}));

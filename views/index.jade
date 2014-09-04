@@ -1,6 +1,7 @@
 extends layout
 
 block content
-  div(data-ng-app)
-    div(data-ng-controller="bc.app")
-      div(data-ng-include="app.view")
+  div(data-ng-app="bcApp")
+    div(ng-view)
+    //div(data-ng-controller="bc.app")
+    //  div(data-ng-include="app.view")

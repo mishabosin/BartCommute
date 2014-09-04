@@ -1,6 +1,6 @@
 (function(bc) {
   'use strict';
-  bc.myStations = function($scope) {
+  bc.bcApp.controller('myStations', function($scope) {
     // List of available bart stations
     $scope.bartStations = null;
 
@@ -92,5 +92,5 @@
       }
     }());
 
-  };
+  });
 }(window.bc = window.bc || {}));
